@@ -17,11 +17,13 @@ return {
       -- to learn the available actions
       lsp_zero.default_keymaps({buffer = bufnr})
       lsp_zero.buffer_autoformat()
+      
+      vim.keymap.set('n', '<leader>i', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     end)
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
-      ensure_installed = {'tsserver', 'eslint'},
+      ensure_installed = {'tsserver', 'eslint', 'html', 'cssls' },
       handlers = {
         lsp_zero.default_setup,
       },
